@@ -19,6 +19,11 @@ https://github.com/toomanybugs1/tasztm/blob/master/assignments/4/Assignment%204.
 - There will be a method to comment on a submission
 - These methods require there to be a class for Students, TA, Submissions, and Courses
 
+### Login (All Users) 
+- should know what kind of user is logging in via their id
+- takes username and password, verifies through comparing keys hashed before sending to database
+- returns user to appropriate dashboard
+
 ## Some Classes
 - Student Class: needs to store a list of courses, personal information (name, id, address, etc.), files, grades for each class, and assignments. There also needs to be methods for students to submit/resubmit assignments, view classes, view class materials, etc.).
 - TA Class: stores list of courses, personal information, and assignments. The methods will include things like viewing assignments, grading assignments, and commenting on assignments.
