@@ -34,7 +34,8 @@
 
 ##### "Course" Class
 - Methods:
-  - submitLoginCredentials()
+  - loginUser()
+  - logoutUser()
   - setCourseInformation()
   - listAssignments()
   - enrollStudentbyID()
@@ -46,4 +47,5 @@
   - sendSubmission()
   - downloadSubmissionFile()
   - uploadSubmissionFile()
+  - setSubmissionNumber()
 ---
