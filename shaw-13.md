@@ -20,9 +20,10 @@ https://github.com/toomanybugs1/tasztm/blob/master/assignments/4/Assignment%204.
 - These methods require there to be a class for Students, TA, Submissions, and Courses
 
 ### Login (All Users) 
-- should know what kind of user is logging in via their id
-- takes username and password, verifies through comparing keys hashed before sending to database
-- returns user to appropriate dashboard
+- Method to get user type based on ID
+- Method to load appropriate UI for the user type
+- Method to hash username and password before sending to server for verification
+- Method to verify username and password
 
 ## Some Classes
 - Student Class: needs to store a list of courses, personal information (name, id, address, etc.), files, grades for each class, and assignments. There also needs to be methods for students to submit/resubmit assignments, view classes, view class materials, etc.).
