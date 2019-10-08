@@ -6,6 +6,7 @@
 ##### "Student" Class
 - Methods:
   - getStudentInfo()
+    -gets student information from the database and is seen in the instructor UI
   - changePassword()
   - enrolledCourses()
 
