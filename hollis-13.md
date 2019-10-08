@@ -2,7 +2,11 @@
 
 # To Do List
 ---
-### Classes and associated methods:
+### Tables/Schemas for database layer:
+- Schemas:
+- Tables:
+
+### Classes and associated methods for application layer:
 ##### "Student" Class
 - Methods:
   - getStudentInfo()
