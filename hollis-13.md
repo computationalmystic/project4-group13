@@ -3,8 +3,23 @@
 # To Do List
 ---
 ### Tables/Schemas for database layer:
-- Schemas:
-- Tables:
+- Schemas: 
+   - User
+    - Tables:
+      - Instructor
+      - TA
+      - Student
+      - SysAdmin
+   - Course
+    - Tables:
+      - Assignments
+      - EnrolledStudents
+      - CourseInfo
+   - Assignment
+    - Tables:
+      - AssignmentInfo
+      - Submission
+      - Grades
 
 ### Classes and associated methods for application layer:
 ##### "Student" Class
