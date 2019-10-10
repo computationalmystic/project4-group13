@@ -3,7 +3,22 @@
 ### Link to Design Document: 
 https://github.com/toomanybugs1/tasztm/blob/master/assignments/4/Assignment%204.pdf
 
-## Some Methods
+## Systems To Implement
+### Relational Database
+- Entities for users, courses, sections
+- Relationships between them (teaches, enrolled, manages, etc)
+- Takes queries from front end to populate user information
+
+### Web Server
+- serves the front end
+- should be able to load different information based on user type
+
+### Front End
+- display information in a clear, aesthetically pleasing way
+- include login
+- give user access to backend methods
+
+## Some Methods To Implement
 
 ### Student File Upload
 - Requires student class with the method uploadFile(file)
@@ -25,7 +40,7 @@ https://github.com/toomanybugs1/tasztm/blob/master/assignments/4/Assignment%204.
 - Method to hash username and password before sending to server for verification
 - Method to verify username and password
 
-## Some Classes
+## Some Classes To Implement
 - Student Class: needs to store a list of courses, personal information (name, id, address, etc.), files, grades for each class, and assignments. There also needs to be methods for students to submit/resubmit assignments, view classes, view class materials, etc.).
 - TA Class: stores list of courses, personal information, and assignments. The methods will include things like viewing assignments, grading assignments, and commenting on assignments.
 - Course Class: stores a list of instructors, TAs, and students involved with the course. Each course will have assignments, files and content associated with it. Methods include uploading/removing files to the course, adding/removing students, adding/removing TAs/Instructors, and posting assignments.
