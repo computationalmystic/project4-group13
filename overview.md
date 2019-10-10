@@ -22,3 +22,6 @@
 |	18	|	Administrator View	|		|
 |	19	|	Course/Section Creation	|		|
 |	20	|	API to send data to frontend	|		|
+
+## Things to Start With
+Before many of the methods in this application can be implemented, we need to build the "framework" of this project. This includes a Relational Database system to hold/serve information (this will be on a server). At the same time there will need to be a web server to host the frontend of the application. The frontend itself can also begin construction while all of this is being done. Finally, there will need to be some kind of API to move information between the frontend and backend.
