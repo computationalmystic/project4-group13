@@ -1,18 +1,17 @@
 var monthsToSubtract = 6;
 
 $(document).ready(function() {
-    getRepoGroupPullRate();
+    getRepoGroupNewContributors();
 });
 
 function resetWithFilter() {
-    
     $("#sectionList").empty();
     $("#sectionBody").empty();
     
-    getRepoGroupPullRate();
+    getRepoGroupNewContributors();
 }
 
-function getRepoGroupPullRate() {
+function getRepoGroupNewContributors() {
     $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups", function(repodata, status){
         
         var repoGroups = repodata;
@@ -30,15 +29,28 @@ function getRepoGroupPullRate() {
             var newEndDate = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
             console.log(newBeginDate);
             
-            $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups/" + e.repo_group_id + "/pull-request-acceptance-rate?begin_date="+ newBeginDate + "&end_date=" + newEndDate, function(pullRate) {
+            $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups/" + e.repo_group_id + "/contributors-new?period=week&begin_date="+ newBeginDate + "&end_date=" + newEndDate, function(newContributors) {
                 
-                if (pullRate.length > 1) { //we need at least 2 datapoints
-                    var rates = [];
+                if (newContributors.length > 1) { //we need at least 2 datapoints
+                    var contCount = [];
                     var weekNums = [];
+                    
+                    console.log(newContributors);
 
-                    pullRate.forEach((f, index) => {      
-                        rates.push(f.rate);
+                    //this nested loop will combine the counts from different repos on the same date
+                    newContributors.forEach((f, index) => {      
+                        
+                        newContributors.forEach((g, i) => {
+                            if (f.contribute_at === g.contribute_at && index != i) {
+                                f.count += g.count;
+                                newContributors.splice(i, 1);
+                            }  
+                        });
+                        
+                        contCount.push(f.count);
                         weekNums.push(index + 1);
+                        newContributors.splice(index, 1);
+                        
                     });
 
                     $("#sectionList").append('<li><a href="#'+ e.repo_group_id + '">'+ e.rg_name + '</a></li>');
@@ -47,7 +59,7 @@ function getRepoGroupPullRate() {
                     $("#" + e.repo_group_id).append('<h1>' + e.rg_name + '</h1>');
                     $("#" + e.repo_group_id).append('<canvas id="'+ e.repo_group_id +'-canvas"></canvas>');
 
-                    createGraph(rates, weekNums, e);
+                    createGraph(contCount, weekNums, e);
                 }
                 
             });
@@ -56,7 +68,7 @@ function getRepoGroupPullRate() {
     });   
 }
 
-function createGraph(rates, weeks, data) {
+function createGraph(contributors, weeks, data) {
     var id = data.repo_group_id;
     
     var r = Math.floor(Math.random() * 255);
@@ -70,7 +82,7 @@ function createGraph(rates, weeks, data) {
                 borderWidth: 1,
                 borderColor: "rgba(" + r + "," + g + "," + b + ", 0.8)",
                 backgroundColor : "rgba(" + r + "," + g + "," + b + ", 0.5)",
-                data: rates,
+                data: contributors,
                 label: data.rg_name
             }],
             labels: weeks
@@ -82,7 +94,7 @@ function createGraph(rates, weeks, data) {
 				},
 				title: {
 					display: true,
-					text: 'Weekly Pullrate Over Last '+ monthsToSubtract +' Months'
+					text: 'Weekly New Contributors Over Last '+ monthsToSubtract +' Months'
 				},
 				animation: {
 					animateScale: true,
