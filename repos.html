@@ -6,20 +6,20 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="bootstraptest.css">
         <meta charset="utf-8">
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-        <script src="scrollbar.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+        <script src="fetchData.js"></script>
     </head>
-    <body data-spy="scroll" data-target="#myScrollspy" data-offset="20" onload="getData()">
+    <body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
         
         <nav class="navbar navbar-inverse navbar-fixed-top nav">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">Home</a>
+                    <a class="navbar-brand" href="bootstraptest.html">Group 13 Stuff</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li  class="active"><a href="repos.html">Top Committers</a></li>
+                    <li class="active"><a href="#">Repository Stuff</a></li>
                     <li><a href="pullrequest.html">Pull Request Acceptance</a></li>
-                    <li><a href="#">Third Visualization</a></li>
                 </ul>
             </div>
         </nav>
@@ -27,15 +27,10 @@
         <div class="container">
             <div class="row">
                 <nav class="col-sm-3" id="myScrollspy">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#section1">Section 1</a></li>
+                    <ul class="nav nav-pills nav-stacked" id="sectionList">
                     </ul>
                 </nav>
-                <div class="col-sm-9">
-                    <div id="section1">
-                        <h1>Section 1</h1>
-                        <p>Try to scroll this page and look at the navigation list while scrolling!</p>
-                    </div>
+                <div class="col-sm-9" id="sectionBody">
                 </div>
             </div>
         </div>
