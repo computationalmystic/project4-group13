@@ -16,45 +16,31 @@ function resetWithFilter() {
 
 function getRepoGroupInfo() {
     $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups", function(repodata, status){
-        
-        var repoGroups = repodata;
-        repoGroups.forEach((e) => {
-            
-            
-            
-            $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups/" + e.repo_group_id + "/top-committers?threshold=1", function(committerData, status){
-                
-                e.committers = committerData;
-                e.committers.pop();
-                
-                e.totalCommits = 0;
-                    
-                $("#sectionList").append('<li><a href="#'+ e.repo_group_id + '">'+ e.rg_name + '</a></li>');
-                
-                $("#sectionBody").append('<div id="'+ e.repo_group_id +'"></div>');
-                $("#" + e.repo_group_id).append('<h1>' + e.rg_name + '</h1>');
-                $("#" + e.repo_group_id).append('<canvas id="'+ e.repo_group_id +'-canvas"></canvas>');
+        if (status == "success") {
+            var repoGroups = repodata;
+            repoGroups.forEach((e) => {
 
-                createGraph(e);
-                
+                $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups/" + e.repo_group_id + "/top-committers?threshold=1", function(committerData, status){
+
+                    e.committers = committerData;
+                    e.committers.pop();
+
+                    e.totalCommits = 0;
+
+                    $("#sectionList").append('<li><a href="#'+ e.repo_group_id + '">'+ e.rg_name + '</a></li>');
+
+                    $("#sectionBody").append('<div id="'+ e.repo_group_id +'"></div>');
+                    $("#" + e.repo_group_id).append('<h1>' + e.rg_name + '</h1>');
+                    $("#" + e.repo_group_id).append('<canvas id="'+ e.repo_group_id +'-canvas"></canvas>');
+
+                    createGraph(e);
+
+                });
             });
-        });
+        }
     });   
 }
 
-function getRepoGroupPullRate() {
-    $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups", function(repodata, status){
-        
-        var repoGroups = repodata;
-        repoGroups.forEach((e) => {
-            
-            $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups/" + e.repo_group_id + "/pull-request-acceptance-rate", function(pullRate) {
-                e.pullRate = pullRate[0].rate;
-            });
-            
-        });
-    });   
-}
 
 function createGraph(data) {
     var id = data.repo_group_id;
