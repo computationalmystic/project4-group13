@@ -48,3 +48,7 @@ canvas {
     background-color: #d1d1d1;
     padding: 20px;
 }
+
+#percInput {
+    margin: 10px 0;
+}

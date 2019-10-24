@@ -1,6 +1,18 @@
+var contributionPercentage = 0.2;
+
 $(document).ready(function() {
    getRepoGroupInfo(); 
 });
+
+function resetWithFilter() {
+    //clear #sectionList and #sectionBody
+    contributionPercentage = $("#percentInput").val();
+    
+    $("#sectionList").empty();
+    $("#sectionBody").empty();
+    
+    getRepoGroupInfo();
+}
 
 function getRepoGroupInfo() {
     $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups", function(repodata, status){
@@ -48,6 +60,11 @@ function createGraph(data) {
     var id = data.repo_group_id;
     var committers = data.committers;
     var otherCommits = 0; //this accounts for any commit
+    var totalCommits = 0;
+    
+    committers.forEach(e => {
+        totalCommits += e.commits;
+    });
     
     var numbers = [];
     var emails = [];
@@ -56,7 +73,7 @@ function createGraph(data) {
     
     committers.forEach(e => { //separate into two arrays
         
-        if (e.commits > 10) {
+        if (e.commits > (totalCommits / 100) * contributionPercentage) {
             numbers.push(e.commits);
             emails.push(e.email);
             
@@ -96,7 +113,7 @@ function createGraph(data) {
 				},
 				title: {
 					display: true,
-					text: 'Contributions Per User'
+					text: 'Contributions Per User (Total - '+ totalCommits +')'
 				},
 				animation: {
 					animateScale: true,
