@@ -1,11 +1,11 @@
 .nav {
     background-color: purple;
 }
-        
+
 body {
     background-color: dimgray;
 }
-    
+
 .container {
     color: purple;
     top: 100px;
@@ -42,7 +42,6 @@ body {
 .panel {
     margin-bottom: 25px;
     background-color: purple;
-<<<<<<< HEAD
 }
 
 canvas {
@@ -52,6 +51,4 @@ canvas {
 
 #numberInput {
     margin: 10px 0;
-=======
->>>>>>> production
 }
