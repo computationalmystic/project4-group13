@@ -13,7 +13,7 @@ function resetWithFilter() {
 }
 
 function getRepoGroupPullRate() {
-    $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups", function(repodata, status){
+    $.get("https://augur.osshealth.io:5000/api/unstable/repo-groups", function(repodata, status){
         
         var repoGroups = repodata;
         monthsToSubtract = $("#monthInput").val();
@@ -30,7 +30,7 @@ function getRepoGroupPullRate() {
             var newEndDate = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
             console.log(newBeginDate);
             
-            $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups/" + e.repo_group_id + "/pull-request-acceptance-rate?begin_date="+ newBeginDate + "&end_date=" + newEndDate, function(pullRate) {
+            $.get("https://augur.osshealth.io:5000/api/unstable/repo-groups/" + e.repo_group_id + "/pull-request-acceptance-rate?begin_date="+ newBeginDate + "&end_date=" + newEndDate, function(pullRate) {
                 
                 if (pullRate.length > 1) { //we need at least 2 datapoints
                     var rates = [];
