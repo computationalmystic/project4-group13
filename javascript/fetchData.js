@@ -15,12 +15,12 @@ function resetWithFilter() {
 }
 
 function getRepoGroupInfo() {
-    $.get("https://augur.osshealth.io:5000/api/unstable/repo-groups", function(repodata, status){
+    $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups", function(repodata, status){
         if (status == "success") {
             var repoGroups = repodata;
             repoGroups.forEach((e) => {
 
-                $.get("https://augur.osshealth.io:5000/api/unstable/repo-groups/" + e.repo_group_id + "/top-committers?threshold=1", function(committerData, status){
+                $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups/" + e.repo_group_id + "/top-committers?threshold=1", function(committerData, status){
 
                     e.committers = committerData;
                     e.committers.pop();
