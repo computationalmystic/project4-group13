@@ -12,7 +12,7 @@ function resetWithFilter() {
 }
 
 function getRepoGroupNewContributors() {
-    $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups", function(repodata, status){
+    $.get("https://cors-anywhere.herokuapp.com/http://augur.osshealth.io:5000/api/unstable/repo-groups", function(repodata, status){
         
         var repoGroups = repodata;
         monthsToSubtract = $("#monthInput").val();
@@ -29,7 +29,7 @@ function getRepoGroupNewContributors() {
             var newEndDate = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
             console.log(newBeginDate);
             
-            $.get("http://augur.osshealth.io:5000/api/unstable/repo-groups/" + e.repo_group_id + "/contributors-new?period=week&begin_date="+ newBeginDate + "&end_date=" + newEndDate, function(newContributors) {
+            $.get("https://cors-anywhere.herokuapp.com/http://augur.osshealth.io:5000/api/unstable/repo-groups/" + e.repo_group_id + "/contributors-new?period=week&begin_date="+ newBeginDate + "&end_date=" + newEndDate, function(newContributors) {
                 
                 if (newContributors.length > 1) { //we need at least 2 datapoints
                     var contCount = [];
