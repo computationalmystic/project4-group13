@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Contributors</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstraptest.css">
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+        <script src="javascript/newContributors.js"></script>
+    </head>
+    <body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top nav">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">Group 13 Stuff</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="repos.html">Repository Stuff</a></li>
+                    <li><a href="pullrequest.html">Pull Request Acceptance</a></li>
+                    <li class="active"><a href="newContributors.html">Weekly New Contributors</a></li>
+                </ul>
+            </div>
+        </nav>
+        <p><br><br><br></p>
+        <div class="container">
+            <div id="numberInput">
+                <p>Months To Show:</p>
+                <input type="number" value="6" id="monthInput">
+                <button onclick="resetWithFilter()" class="btn">Apply</button>
+            </div>
+            <div class="row">
+                <nav class="col-sm-3" id="myScrollspy">
+                    <ul class="nav nav-pills nav-stacked" id="sectionList">
+                    </ul>
+                </nav>
+                <div class="col-sm-9" id="sectionBody">
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
