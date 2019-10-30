@@ -2,4 +2,6 @@
 
 This is our repository for assignment 6.
 
-Our markdown documents are in the folder md.
+The web pages are hosted on the Github Pages environment for this repo.
+
+Our markdown documents for "Project 4: Deployment Focus" are in the folder **mds**.
